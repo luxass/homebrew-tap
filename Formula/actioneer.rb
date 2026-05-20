@@ -1,26 +1,26 @@
 class Actioneer < Formula
   desc "CLI tool for GitHub Actions workflows"
   homepage "https://github.com/luxass/actioneer"
-  version "0.1.0"
+  version "0.1.5"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "#{homepage}/releases/download/v#{version}/actioneer-#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "9e5562e7fbea8f7d4847f775be69e91e0f8c83fdc7a0a70f74a2cb3e7d913b69" # sha-update-id: actioneer-aarch64-apple-darwin
+      sha256 "06305c5c9afd4bf26f9d668d81d37fc79fdf15cd3aad9db69cbe6a3446a5ffd9" # sha-update-id: actioneer-aarch64-apple-darwin
     else
       url "#{homepage}/releases/download/v#{version}/actioneer-#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "301f54fe499d221b8e29627b04f014ba1bb171ac1c2e92c19625b4c1224a8f75" # sha-update-id: actioneer-x86_64-apple-darwin
+      sha256 "6a134746e251a1c7aaf9cb665a1e79fd8a3033c171fdd25b10a8993b806a8c97" # sha-update-id: actioneer-x86_64-apple-darwin
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "#{homepage}/releases/download/v#{version}/actioneer-#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "92a7acc5bc55b440fa4808a78fb364d36d65b6c6742396dd3fd946c07e210f76" # sha-update-id: actioneer-aarch64-unknown-linux-gnu
+      sha256 "ad136eadad93c43cdc7fca9991383223db15b9c4d096bf9627b5f3d20d928d1b" # sha-update-id: actioneer-aarch64-unknown-linux-gnu
     else
       url "#{homepage}/releases/download/v#{version}/actioneer-#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "86d9f218413339e285e195f688f26ebc26b8f4d55adcd152249274734b9d1d5e" # sha-update-id: actioneer-x86_64-unknown-linux-gnu
+      sha256 "5c179d8003c9662f4a436529888e3d1a20bdb870b5d778e1164006a05f8eb65d" # sha-update-id: actioneer-x86_64-unknown-linux-gnu
     end
   end
 
