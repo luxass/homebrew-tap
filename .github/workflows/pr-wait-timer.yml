@@ -1,0 +1,16 @@
+name: PR Wait Timer
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  wait:
+    runs-on: ubuntu-latest
+    environment:
+      name: wait-timer
+      deployment: false
+    steps:
+      - run: echo "Waited 10 minutes"
