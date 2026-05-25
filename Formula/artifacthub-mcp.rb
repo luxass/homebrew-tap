@@ -1,7 +1,7 @@
 class ArtifacthubMcp < Formula
   desc "MCP server for Artifact Hub"
   homepage "https://github.com/luxass/artifacthub-mcp"
-  version "0.2.1"
+  version "artifacthub-mcp@0.2.2"
   license "MIT"
 
   on_macos do
