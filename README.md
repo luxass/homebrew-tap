@@ -10,10 +10,11 @@ brew tap luxass/homebrew-tap
 
 ## Available Formulas
 
-| Formula                                       | Description                           |
-| --------------------------------------------- | ------------------------------------- |
-| [actioneer](Formula/actioneer.rb)             | CLI tool for GitHub Actions workflows |
-| [artifacthub-mcp](Formula/artifacthub-mcp.rb) | MCP server for Artifact Hub           |
+| Formula                                       | Description                                                        |
+| --------------------------------------------- | ------------------------------------------------------------------ |
+| [actioneer](Formula/actioneer.rb)             | CLI tool for GitHub Actions workflows                              |
+| [artifacthub-mcp](Formula/artifacthub-mcp.rb) | MCP server for Artifact Hub                                        |
+| [agent-repos](Formula/agent-repos.rb)         | Maintain pinned clones of reference repositories for coding agents |
 
 ## Usage
 
@@ -22,6 +23,7 @@ Install a formula:
 ```bash
 brew install actioneer
 brew install artifacthub-mcp
+brew install agent-repos
 ```
 
 ## License
