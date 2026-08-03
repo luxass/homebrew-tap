@@ -16,11 +16,11 @@ class AgentRepos < Formula
 
   on_linux do
     if Hardware::CPU.arm?
-      url "#{homepage}/releases/download/v#{version}/agent-repos-#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000" # sha-update-id: agent-repos-aarch64-unknown-linux-gnu
+      url "#{homepage}/releases/download/v#{version}/agent-repos-#{version}-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000" # sha-update-id: agent-repos-aarch64-unknown-linux-musl
     else
-      url "#{homepage}/releases/download/v#{version}/agent-repos-#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000" # sha-update-id: agent-repos-x86_64-unknown-linux-gnu
+      url "#{homepage}/releases/download/v#{version}/agent-repos-#{version}-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000" # sha-update-id: agent-repos-x86_64-unknown-linux-musl
     end
   end
 
