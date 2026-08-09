@@ -1,26 +1,26 @@
 class AgentRepos < Formula
   desc "Maintain pinned clones of reference repositories for coding agents"
   homepage "https://github.com/luxass/agent-repos"
-  version "0.0.2"
+  version "0.0.3"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "#{homepage}/releases/download/v#{version}/agent-repos-#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "c4b05b0aac92fb825f2c1a8732c1cb77796d3037d549a04da4b802b850d6c98f" # sha-update-id: agent-repos-aarch64-apple-darwin
+      sha256 "1562145fc9f247a696dadc2fae5adf832fca1f320f9326dbd878445039bc842a" # sha-update-id: agent-repos-aarch64-apple-darwin
     else
       url "#{homepage}/releases/download/v#{version}/agent-repos-#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "35d0e9e99f0b11a3c70ffc8000cdf10a7761f3428d3cea4a2b586a3a6598ce87" # sha-update-id: agent-repos-x86_64-apple-darwin
+      sha256 "0b7f86aaacfd77e3c606cb2949b3b698686dd8fff1fb0dccfad7b350fd270fb4" # sha-update-id: agent-repos-x86_64-apple-darwin
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "#{homepage}/releases/download/v#{version}/agent-repos-#{version}-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "13f74c42d9f9b6e2d57f8f245ad73eaa77526e0b81fac94a5d94cca1b20b9365" # sha-update-id: agent-repos-aarch64-unknown-linux-musl
+      sha256 "84d145394bc1dde62b628c03e95936560bdf18932fa86579c323a7d372be2768" # sha-update-id: agent-repos-aarch64-unknown-linux-musl
     else
       url "#{homepage}/releases/download/v#{version}/agent-repos-#{version}-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "5327cd3be31a7b49dfd33ecb7af7ebc67c086605418603e9670f6b0fd38937a1" # sha-update-id: agent-repos-x86_64-unknown-linux-musl
+      sha256 "3572f4955a2a582f916f25c0a636cb713ea7f8b69837434f67b919da651558a3" # sha-update-id: agent-repos-x86_64-unknown-linux-musl
     end
   end
 
