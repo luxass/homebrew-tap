@@ -1,26 +1,26 @@
 class ArtifacthubMcp < Formula
   desc "MCP server for Artifact Hub"
   homepage "https://github.com/luxass/artifacthub-rs"
-  version "0.2.7"
+  version "0.2.8"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "#{homepage}/releases/download/artifacthub-mcp%40#{version}/artifacthub-mcp-#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "e45221c37a4bff13131c13e9d282ca0a307e11094b7576b3759b34af645e16cd" # sha-update-id: artifacthub-mcp-aarch64-apple-darwin
+      sha256 "4e965fa799a5049429f42e9aa0ce56bb75275f26ae743766b7db5709579ace8a" # sha-update-id: artifacthub-mcp-aarch64-apple-darwin
     else
       url "#{homepage}/releases/download/artifacthub-mcp%40#{version}/artifacthub-mcp-#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "92e9d821e522c40b7f119a2f68cf7898d9b8b5ed600e96eea0f6f5b60cd5b439" # sha-update-id: artifacthub-mcp-x86_64-apple-darwin
+      sha256 "7176700eb2e887599bdbbae8cf75e768f5df7e5ff6630acc3551abbe583a1b65" # sha-update-id: artifacthub-mcp-x86_64-apple-darwin
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "#{homepage}/releases/download/artifacthub-mcp%40#{version}/artifacthub-mcp-#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "da7c456537eda86518f6789280c5dbc302219f73c8460d1bc99f577a2c2fb30d" # sha-update-id: artifacthub-mcp-aarch64-unknown-linux-gnu
+      sha256 "1ac4220d2c808a5da6a642089da768069a6845845e8e550cea26042a2aae487e" # sha-update-id: artifacthub-mcp-aarch64-unknown-linux-gnu
     else
       url "#{homepage}/releases/download/artifacthub-mcp%40#{version}/artifacthub-mcp-#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "0b477777fac90b9f6b6798c127f1ca1681c6ae6e1c0fb0786540da90d7edf172" # sha-update-id: artifacthub-mcp-x86_64-unknown-linux-gnu
+      sha256 "553fd96e111e295a05a8bd0b31270b028ab7f66505ca02ddbf49680a9fc81908" # sha-update-id: artifacthub-mcp-x86_64-unknown-linux-gnu
     end
   end
 
