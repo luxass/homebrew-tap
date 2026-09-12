@@ -15,6 +15,7 @@ brew tap luxass/homebrew-tap
 | [actioneer](Formula/actioneer.rb)             | CLI tool for GitHub Actions workflows                              |
 | [artifacthub-mcp](Formula/artifacthub-mcp.rb) | MCP server for Artifact Hub                                        |
 | [agent-repos](Formula/agent-repos.rb)         | Maintain pinned clones of reference repositories for coding agents |
+| [imessage-relay-server](Formula/imessage-relay-server.rb) | Local HTTP API for Apple Messages |
 
 ## Usage
 
@@ -24,6 +25,7 @@ Install a formula:
 brew install actioneer
 brew install artifacthub-mcp
 brew install agent-repos
+brew install imessage-relay-server
 ```
 
 ## License
