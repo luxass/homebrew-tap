@@ -1,7 +1,7 @@
 class ImessageRelayCli < Formula
   desc "Command-line interface for the local Apple Messages relay"
   homepage "https://github.com/luxass/imessage-relay"
-  version "0.3.0"
+  version "0.3.1"
   license "MIT"
 
   # v0.3.0 predates the CLI and archive rename.
@@ -10,7 +10,7 @@ class ImessageRelayCli < Formula
   else
     url "#{homepage}/releases/download/v#{version}/imessage-relay-cli-#{version}-macos-universal.tar.gz"
   end
-  sha256 "6367b1db054c2156f7e2752c264980ffb36c44d11824706dc5e26dab6cde3375" # sha-update-id: imessage-relay-cli-macos-universal
+  sha256 "ba2b55a52c8463c28a5c0ced69ac77b64f372f940a485b0b2b06e0c809d4d855" # sha-update-id: imessage-relay-cli-macos-universal
 
   depends_on :macos
 

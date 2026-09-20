@@ -1,6 +1,6 @@
 cask "imessage-relay" do
-  version "0.3.0"
-  sha256 "ad2d2fcbff7dcd3d5a49676303e238f204c7e250d1a7d4c68497835ef363757e" # sha-update-id: imessage-relay-macos-universal
+  version "0.3.1"
+  sha256 "3c84dd4e5fa6e7c59cfb90c531fc7ecc6bdd546d6f13dd2a84424d1bdb98a4b3" # sha-update-id: imessage-relay-macos-universal
 
   url "https://github.com/luxass/imessage-relay/releases/download/v#{version}/imessage-relay-#{version}-macos-universal.zip"
   name "iMessage Relay"
