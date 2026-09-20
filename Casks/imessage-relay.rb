@@ -7,6 +7,7 @@ cask "imessage-relay" do
   desc "Menu bar app for the local Apple Messages relay"
   homepage "https://github.com/luxass/imessage-relay"
 
+  depends_on formula: "imessage-relay-cli"
   depends_on macos: :sonoma
 
   app "iMessage Relay.app"
