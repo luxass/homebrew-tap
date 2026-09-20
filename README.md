@@ -28,6 +28,18 @@ brew install agent-repos
 brew install imessage-relay-server
 ```
 
+## Available Casks
+
+| Cask | Description |
+| ---- | ----------- |
+| [imessage-relay](Casks/imessage-relay.rb) | Menu bar app for the local Apple Messages relay |
+
+Install the menu bar app:
+
+```bash
+brew install --cask luxass/tap/imessage-relay
+```
+
 ## License
 
 Published under [MIT License](./LICENSE).
