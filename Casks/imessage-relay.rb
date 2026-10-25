@@ -4,11 +4,17 @@ cask "imessage-relay" do
 
   url "https://github.com/luxass/imessage-relay/releases/download/v#{version}/imessage-relay-#{version}-macos-universal.zip"
   name "iMessage Relay"
-  desc "Menu bar app for the local Apple Messages relay"
+  desc "Menu bar app and CLI for the local Apple Messages relay"
   homepage "https://github.com/luxass/imessage-relay"
 
-  depends_on formula: "imessage-relay-cli"
   depends_on macos: :sonoma
+
+  # The existing 0.4.0 ZIP predates the combined app and CLI archive.
+  if version.to_s == "0.4.0"
+    depends_on formula: "imessage-relay-cli"
+  else
+    binary "#{staged_path}/imessage-relay"
+  end
 
   app "iMessage Relay.app"
 end
