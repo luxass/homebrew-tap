@@ -7,6 +7,7 @@ cask "imessage-relay" do
   desc "Menu bar app and CLI for the local Apple Messages relay"
   homepage "https://github.com/luxass/imessage-relay"
 
+  conflicts_with cask: "imessage-relay@rc"
   depends_on macos: :sonoma
 
   # The existing 0.4.0 ZIP predates the combined app and CLI archive.
