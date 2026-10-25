@@ -12,6 +12,10 @@ class ImessageRelayCli < Formula
   end
   sha256 "962ea3d929676653cd53fd505e29736b06e3b3db11c0eaf2daaf321ce155ce3a" # sha-update-id: imessage-relay-cli-macos-universal
 
+  deprecate! date: "2026-11-01",
+             because: "is now included in the imessage-relay cask",
+             replacement_cask: "luxass/tap/imessage-relay"
+
   depends_on :macos
 
   on_macos do
