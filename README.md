@@ -66,10 +66,15 @@ and install `imessage-relay`. Do not use `--zap` when switching if you want to k
 
 ## CI checks
 
-The Homebrew tests workflow uses stable Homebrew syntax checks and tests changed formulae on macOS and Linux.
+[CI](.github/workflows/ci.yaml) uses stable Homebrew syntax checks and tests changed formulae on macOS and Linux.
 Separate macOS jobs install each changed relay cask, check that the app exists,
 compare the CLI version with the cask version, run `--help`, and uninstall the cask.
 These jobs do not launch the app or start the relay.
+
+[CI Security](.github/workflows/ci-security.yaml) calls the shared Zizmor workflow at a pinned release commit.
+It runs when workflow or Zizmor configuration files change, and it can also run manually.
+Security findings fail the check. The shared workflow uploads results to GitHub code scanning.
+Its reporting and identity-token permissions stay separate from the Homebrew test jobs.
 
 The existing PR wait timer remains in place.
 

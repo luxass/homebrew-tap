@@ -1,5 +1,4 @@
-# Adapted from https://github.com/dmmulroy/homebrew-tap/blob/main/.github/workflows/tests.yml.
-name: Homebrew tests
+name: CI
 
 on:
   push:
@@ -32,13 +31,19 @@ jobs:
           token: ${{ github.token }}
           stable: true
 
-      - run: brew test-bot --only-cleanup-before
-      - run: brew test-bot --only-setup
-      # Stable syntax checks parse every formula and cask without applying
-      # Homebrew development-only style rules to the updater checksum markers.
-      - run: brew test-bot --only-tap-syntax --stable
-      - run: brew test-bot --only-formulae
+      - name: Clean runner state
+        run: brew test-bot --only-cleanup-before
+
+      - name: Check Homebrew setup
+        run: brew test-bot --only-setup
+
+      - name: Validate formula and cask definitions
+        # Stable checks allow the release updater’s inline checksum markers.
+        run: brew test-bot --only-tap-syntax --stable
+
+      - name: Test changed formulae
         if: github.event_name == 'pull_request'
+        run: brew test-bot --only-formulae
 
   cask-install:
     name: Install ${{ matrix.cask }}
@@ -50,6 +55,8 @@ jobs:
         cask: [imessage-relay, imessage-relay@rc]
     permissions:
       contents: read
+    env:
+      CASK: luxass/tap/${{ matrix.cask }}
     steps:
       - name: Set up Homebrew and check out the tap
         uses: Homebrew/actions/setup-homebrew@3cdb78d0f62ad29dd32de765782654f4eedea607 # 2026.08.31.1
@@ -57,7 +64,7 @@ jobs:
           token: ${{ github.token }}
           stable: true
 
-      - name: Check whether this cask changed
+      - name: Detect cask changes
         id: changed
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
@@ -68,25 +75,19 @@ jobs:
             echo "changed=true" >> "${GITHUB_OUTPUT}"
           fi
 
-      - name: Install the changed cask
+      - name: Install cask
         id: install
         if: steps.changed.outputs.changed == 'true'
-        env:
-          CASK: luxass/tap/${{ matrix.cask }}
         run: brew install --cask "${CASK}"
 
-      - name: Verify the app and CLI without launching the relay
+      - name: Check app and CLI
         if: steps.changed.outputs.changed == 'true'
-        env:
-          CASK: luxass/tap/${{ matrix.cask }}
         run: |
           test -d "/Applications/iMessage Relay.app"
           expected_version="$(brew info --cask --json=v2 "${CASK}" | jq -r '.casks[0].version')"
           test "$(imessage-relay --version)" = "${expected_version}"
           imessage-relay --help
 
-      - name: Uninstall the cask
+      - name: Uninstall cask
         if: always() && steps.install.outcome == 'success'
-        env:
-          CASK: luxass/tap/${{ matrix.cask }}
         run: brew uninstall --cask "${CASK}"
