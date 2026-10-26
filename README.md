@@ -76,7 +76,9 @@ It runs when workflow or Zizmor configuration files change, and it can also run 
 Security findings fail the check. The shared workflow uploads results to GitHub code scanning.
 Its reporting and identity-token permissions stay separate from the Homebrew test jobs.
 
-The existing PR wait timer remains in place.
+The PR wait timer applies only to changes under `Formula/` or `Casks/`, including renames out of those directories.
+Other PRs skip the timer but still report the required `wait` check.
+Change-detection errors or failed timers fail that check rather than bypassing it.
 
 ## License
 

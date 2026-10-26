@@ -7,10 +7,54 @@ on:
 permissions: {}
 
 jobs:
-  wait:
+  changes:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      packages_changed: ${{ steps.changes.outputs.packages_changed }}
+    steps:
+      - name: Detect formula and cask changes
+        id: changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          files="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/files" \
+            --jq '.[] | .filename, (.previous_filename // empty)')"
+          if grep -Eq '^(Casks|Formula)/' <<< "${files}"; then
+            echo "packages_changed=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "packages_changed=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+  timer:
+    needs: changes
+    if: needs.changes.outputs.packages_changed == 'true'
     runs-on: ubuntu-latest
     environment:
       name: wait-timer
       deployment: false
     steps:
       - run: echo "Waited 10 minutes"
+
+  wait:
+    needs: [changes, timer]
+    # This required check must report failure even if an earlier job is canceled.
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Check timer result
+        env:
+          CHANGES_RESULT: ${{ needs.changes.result }}
+          PACKAGES_CHANGED: ${{ needs.changes.outputs.packages_changed }}
+          TIMER_RESULT: ${{ needs.timer.result }}
+        run: |
+          test "${CHANGES_RESULT}" = success
+          if [[ "${PACKAGES_CHANGED}" == true ]]; then
+            test "${TIMER_RESULT}" = success
+          else
+            test "${PACKAGES_CHANGED}" = false
+          fi
